@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var myAccountController = require('../controllers/my-account');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -10,6 +11,11 @@ router.get('/index', function(req, res, next) {
   res.render('index', { title: 'Book Store' });
 });
 
+/* Authentication */
+router.get('/my-account', myAccountController.index);
+router.post('/my-account/register', myAccountController.register);
+
+/* Others */ 
 router.get('/about', function(req, res, next) {
   res.render('about', { title: 'about' });
 });
@@ -36,10 +42,6 @@ router.get('/contact', function(req, res, next) {
 
 router.get('/faq', function(req, res, next) {
   res.render('faq', { title: 'faq' });
-});
-
-router.get('/my-account', function(req, res, next) {
-  res.render('my-account', { title: 'my-account' });
 });
 
 router.get('/portfolio-details', function(req, res, next) {
