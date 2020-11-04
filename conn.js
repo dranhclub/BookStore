@@ -1,15 +1,18 @@
-var mysql = require('mysql');
+const mysql = require('mysql2/promise');
 
-var conn = mysql.createConnection({
+var conn = mysql.createPool({
   host: "localhost",
   user: "root",
   password: "123456",
-  database: 'bookstore'
+  database: 'bookstore',
+  waitForConnections: true,
+  connectionLimit: 100,
+  queueLimit: 0
 });
 
-conn.connect(function(err) {
-  if (err) throw err;
-  console.log("MySQL Connected!");
-});
+// conn.connect(function(err) {
+//   if (err) throw err;
+//   console.log("MySQL Connected!");
+// });
 
 module.exports = conn;

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var myAccountController = require('../controllers/my-account');
-
+var shopGridController = require('../controllers/shop-grid-controller');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Book Store' });
@@ -52,9 +52,7 @@ router.get('/portfolio', function(req, res, next) {
   res.render('portfolio', { title: 'portfolio' });
 });
 
-router.get('/shop-grid', function(req, res, next) {
-  res.render('shop-grid', { title: 'shop-grid' });
-});
+router.get('/shop-grid', shopGridController.index);
 
 router.get('/single-product', function(req, res, next) {
   res.render('single-product', { title: 'single-product' });
