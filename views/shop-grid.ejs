@@ -1,35 +1,4 @@
-﻿<!doctype html>
-<html class="no-js" lang="zxx">
-
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Shop-Grid | Bookshop Responsive Bootstrap4 Template</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<!-- Favicons -->
-	<link rel="shortcut icon" href="images/favicon.ico">
-	<link rel="apple-touch-icon" href="images/icon.png">
-
-	<!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,600i,700,700i,800"
-		rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/plugins.css">
-	<link rel="stylesheet" href="style.css">
-
-	<!-- Cusom css -->
-	<link rel="stylesheet" href="css/custom.css">
-
-	<!-- Modernizer js -->
-	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
-</head>
-
+﻿<%-include('./parts/header')%>
 <body>
 	<!--[if lte IE 9]>
 		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -299,10 +268,10 @@
 												<div class="switcher-currency-trigger">
 													<div class="setting__menu">
 														<span><a href="#">Compare Product</a></span>
-														<span><a href="#">My Account</a></span>
+														<span><a href="/my-account">My Account</a></span>
 														<span><a href="#">My Wishlist</a></span>
-														<span><a href="#">Sign In</a></span>
-														<span><a href="#">Create An Account</a></span>
+														<span><a href="/my-account">Sign In</a></span>
+														<span><a href="/my-account">Create An Account</a></span>
 													</div>
 												</div>
 											</div>
@@ -364,19 +333,7 @@
 		</header>
 		<!-- //Header -->
 		<!-- Start Search Popup -->
-		<div class="box-search-content search_active block-bg close__top">
-			<form id="search_mini_form" class="minisearch" action="#">
-				<div class="field__search">
-					<input type="text" placeholder="Search entire store here...">
-					<div class="action">
-						<a href="#"><i class="zmdi zmdi-search"></i></a>
-					</div>
-				</div>
-			</form>
-			<div class="close__wrap">
-				<span>close</span>
-			</div>
-		</div>
+		<%-include('./parts/search-popup')%>
 		<!-- End Search Popup -->
 		<!-- Start Bradcaump area -->
 		<div class="ht__bradcaump__area bg-image--6">
@@ -503,12 +460,12 @@
 									<% for (i = 0; i < products.length; i++) {%>
 									<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product__thumb">
-											<a class="first__img" href="single-product"><img src="<%=products[i].coverImage.url%>" alt="product image"></a>
-											<a class="second__img animation1" href="single-product"><img src="<%=products[i].coverImage.url%>"
+											<a class="first__img" href="single-product/<%=products[i].id%>"><img src="<%=products[i].coverImage.url%>" alt="product image"></a>
+											<a class="second__img animation1" href="single-product/<%=products[i].id%>"><img src="<%=products[i].coverImage.url%>"
 													alt="product image"></a>
 										</div>
 										<div class="product__content content--center">
-											<h4><a href="single-product"><%=products[i].title%></a></h4>
+											<h4><a href="single-product/<%=products[i].id%>"><%=products[i].title%></a></h4>
 											<ul class="prize d-flex">
 												<li>$<%=products[i].price%></li>
 												<li class="old_prize">$<%=products[i].price%></li>
@@ -554,13 +511,13 @@
 									<!-- Start Single Product -->
 									<div class="list__view mt--40">
 										<div class="thumb">
-											<a class="first__img" href="single-product"><img src="<%=products[i].coverImage.url%>"
+											<a class="first__img" href="single-product/<%=products[i].id%>"><img src="<%=products[i].coverImage.url%>"
 													alt="product images"></a>
-											<a class="second__img animation1" href="single-product"><img src="<%=products[i].coverImage.url%>"
+											<a class="second__img animation1" href="single-product/<%=products[i].id%>"><img src="<%=products[i].coverImage.url%>"
 													alt="product images"></a>
 										</div>
 										<div class="content">
-											<h2><a href="single-product"><%=products[i].title%></a></h2>
+											<h2><a href="single-product/<%=products[i].id%>"><%=products[i].title%></a></h2>
 											<ul class="rating d-flex">
 												<li class="on"><i class="fa fa-star-o"></i></li>
 												<li class="on"><i class="fa fa-star-o"></i></li>

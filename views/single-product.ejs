@@ -1,32 +1,4 @@
-﻿<!doctype html>
-<html class="no-js" lang="zxx">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Shop-Single | Bookshop Responsive Bootstrap4 Template</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<!-- Favicons -->
-	<link rel="shortcut icon" href="images/favicon.ico">
-	<link rel="apple-touch-icon" href="images/icon.png">
-
-	<!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet"> 
-	<link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,600i,700,700i,800" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/plugins.css">
-	<link rel="stylesheet" href="style.css">
-
-	<!-- Cusom css -->
-   <link rel="stylesheet" href="css/custom.css">
-
-	<!-- Modernizer js -->
-	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
-</head>
+﻿<%-include('./parts/header')%>
 <body>
 	<!--[if lte IE 9]>
 		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
@@ -42,14 +14,14 @@
 					<div class="col-md-4 col-sm-4 col-7 col-lg-2">
 						<div class="logo">
 							<a href="index">
-								<img src="images/logo/logo.png" alt="logo images">
+								<img src="/images/logo/logo.png" alt="logo images">
 							</a>
 						</div>
 					</div>
 					<div class="col-lg-8 d-none d-lg-block">
 						<nav class="mainmenu__nav">
 							<ul class="meninmenu d-flex justify-content-start">
-								<li class="drop with--one--item"><a href="index">Home</a></li>
+								<li class="drop with--one--item"><a href="/index">Home</a></li>
 								<li class="drop"><a href="#">Shop</a>
 									<div class="megamenu mega03">
 										<ul class="item item03">
@@ -181,7 +153,7 @@
 											<div class="miniproduct">
 												<div class="item01 d-flex">
 													<div class="thumb">
-														<a href="product-details.html"><img src="images/product/sm-img/1.jpg" alt="product images"></a>
+														<a href="product-details.html"><img src="/images/product/sm-img/1.jpg" alt="product images"></a>
 													</div>
 													<div class="content">
 														<h6><a href="product-details.html">Voyage Yoga Bag</a></h6>
@@ -197,7 +169,7 @@
 												</div>
 												<div class="item01 d-flex mt--20">
 													<div class="thumb">
-														<a href="product-details.html"><img src="images/product/sm-img/3.jpg" alt="product images"></a>
+														<a href="product-details.html"><img src="/images/product/sm-img/3.jpg" alt="product images"></a>
 													</div>
 													<div class="content">
 														<h6><a href="product-details.html">Impulse Duffle</a></h6>
@@ -213,7 +185,7 @@
 												</div>
 												<div class="item01 d-flex mt--20">
 													<div class="thumb">
-														<a href="product-details.html"><img src="images/product/sm-img/2.jpg" alt="product images"></a>
+														<a href="product-details.html"><img src="/images/product/sm-img/2.jpg" alt="product images"></a>
 													</div>
 													<div class="content">
 														<h6><a href="product-details.html">Compete Track Tote</a></h6>
@@ -293,10 +265,10 @@
 												<div class="switcher-currency-trigger">
 													<div class="setting__menu">
 														<span><a href="#">Compare Product</a></span>
-														<span><a href="#">My Account</a></span>
+														<span><a href="/my-account">My Account</a></span>
 														<span><a href="#">My Wishlist</a></span>
-														<span><a href="#">Sign In</a></span>
-														<span><a href="#">Create An Account</a></span>
+														<span><a href="/my-account">Sign In</a></span>
+														<span><a href="/my-account">Create An Account</a></span>
 													</div>
 												</div>
 											</div>
@@ -398,20 +370,16 @@
         						<div class="col-lg-6 col-12">
         							<div class="wn__fotorama__wrapper">
 	        							<div class="fotorama wn__fotorama__action" data-nav="thumbs">
-		        							  <a href="1.jpg"><img src="images/product/1.jpg" alt=""></a>
-		        							  <a href="2.jpg"><img src="images/product/2.jpg" alt=""></a>
-		        							  <a href="3.jpg"><img src="images/product/3.jpg" alt=""></a>
-		        							  <a href="4.jpg"><img src="images/product/4.jpg" alt=""></a>
-		        							  <a href="5.jpg"><img src="images/product/5.jpg" alt=""></a>
-		        							  <a href="6.jpg"><img src="images/product/6.jpg" alt=""></a>
-		        							  <a href="7.jpg"><img src="images/product/7.jpg" alt=""></a>
-		        							  <a href="8.jpg"><img src="images/product/8.jpg" alt=""></a>
+		        							  <a href="/<%=product.coverImage.url%>"><img src="/<%=product.coverImage.url%>" alt=""></a>
+													<% for (i = 0; i < product.images.length; i++) {%>
+														<a href="/<%=product.images[i].url%>"><img src="/<%=product.images[i].url%>" alt=""></a>
+													<% } %> 
 	        							</div>
         							</div>
         						</div>
         						<div class="col-lg-6 col-12">
         							<div class="product__info__main">
-        								<h1>Chaz Kangeroo Hoodie</h1>
+        								<h1><%= product.title %></h1>
         								<div class="product-reviews-summary d-flex">
         									<ul class="rating-summary d-flex">
     											<li><i class="zmdi zmdi-star-outline"></i></li>
@@ -422,7 +390,7 @@
         									</ul>
         								</div>
         								<div class="price-box">
-        									<span>$52.00</span>
+        									<span>$<%=product.price%></span>
         								</div>
 										<div class="product__overview">
         									<p>Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises superior warmth with every wear. Thick material blocks out the wind as ribbed cuffs and bottom band seal in body heat.</p>
@@ -483,12 +451,7 @@
 	                        	<!-- Start Single Tab Content -->
 	                        	<div class="pro__tab_label tab-pane fade show active" id="nav-details" role="tabpanel">
 									<div class="description__attribute">
-										<p>Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises superior warmth with every wear. Thick material blocks out the wind as ribbed cuffs and bottom band seal in body heat.Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises superior warmth with every wear. Thick material blocks out the wind as ribbed cuffs and bottom band seal in body heat.Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises superior warmth with every wear. Thick material blocks out the wind as ribbed cuffs and bottom band seal in body heat.Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises superior warmth with every wear. Thick material blocks out the wind as ribbed cuffs and bottom band seal in body heat.</p>
-										<ul>
-											<li>• Two-tone gray heather hoodie.</li>
-											<li>• Drawstring-adjustable hood. </li>
-											<li>• Machine wash/dry.</li>
-										</ul>
+										<%=product.description%>
 									</div>
 	                        	</div>
 	                        	<!-- End Single Tab Content -->
@@ -540,7 +503,7 @@
 									</div>
 									<div class="review-fieldset">
 										<h2>You're reviewing:</h2>
-										<h3>Chaz Kangeroo Hoodie</h3>
+										<h3><%=product.title%></h3>
 										<div class="review-field-ratings">
 											<div class="product-review-table">
 												<div class="review-field-rating d-flex">
@@ -606,8 +569,8 @@
 									<!-- Start Single Product -->
 									<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product__thumb">
-											<a class="first__img" href="single-product"><img src="images/books/1.jpg" alt="product image"></a>
-											<a class="second__img animation1" href="single-product"><img src="images/books/2.jpg" alt="product image"></a>
+											<a class="first__img" href="single-product"><img src="/images/books/1.jpg" alt="product image"></a>
+											<a class="second__img animation1" href="single-product"><img src="/images/books/2.jpg" alt="product image"></a>
 											<div class="hot__box">
 												<span class="hot-label">BEST SALLER</span>
 											</div>
@@ -643,8 +606,8 @@
 									<!-- Start Single Product -->
 									<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product__thumb">
-											<a class="first__img" href="single-product"><img src="images/books/3.jpg" alt="product image"></a>
-											<a class="second__img animation1" href="single-product"><img src="images/books/4.jpg" alt="product image"></a>
+											<a class="first__img" href="single-product"><img src="/images/books/3.jpg" alt="product image"></a>
+											<a class="second__img animation1" href="single-product"><img src="/images/books/4.jpg" alt="product image"></a>
 											<div class="hot__box color--2">
 												<span class="hot-label">HOT</span>
 											</div>
@@ -680,8 +643,8 @@
 									<!-- Start Single Product -->
 									<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product__thumb">
-											<a class="first__img" href="single-product"><img src="images/books/7.jpg" alt="product image"></a>
-											<a class="second__img animation1" href="single-product"><img src="images/books/8.jpg" alt="product image"></a>
+											<a class="first__img" href="single-product"><img src="/images/books/7.jpg" alt="product image"></a>
+											<a class="second__img animation1" href="single-product"><img src="/images/books/8.jpg" alt="product image"></a>
 											<div class="hot__box">
 												<span class="hot-label">HOT</span>
 											</div>
@@ -717,8 +680,8 @@
 									<!-- Start Single Product -->
 									<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product__thumb">
-											<a class="first__img" href="single-product"><img src="images/books/9.jpg" alt="product image"></a>
-											<a class="second__img animation1" href="single-product"><img src="images/books/10.jpg" alt="product image"></a>
+											<a class="first__img" href="single-product"><img src="/images/books/9.jpg" alt="product image"></a>
+											<a class="second__img animation1" href="single-product"><img src="/images/books/10.jpg" alt="product image"></a>
 											<div class="hot__box">
 												<span class="hot-label">HOT</span>
 											</div>
@@ -754,8 +717,8 @@
 									<!-- Start Single Product -->
 									<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product__thumb">
-											<a class="first__img" href="single-product"><img src="images/books/11.jpg" alt="product image"></a>
-											<a class="second__img animation1" href="single-product"><img src="images/books/2.jpg" alt="product image"></a>
+											<a class="first__img" href="single-product"><img src="/images/books/11.jpg" alt="product image"></a>
+											<a class="second__img animation1" href="single-product"><img src="/images/books/2.jpg" alt="product image"></a>
 											<div class="hot__box">
 												<span class="hot-label">BEST SALER</span>
 											</div>
@@ -791,8 +754,8 @@
 									<!-- Start Single Product -->
 									<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product__thumb">
-											<a class="first__img" href="single-product"><img src="images/books/1.jpg" alt="product image"></a>
-											<a class="second__img animation1" href="single-product"><img src="images/books/6.jpg" alt="product image"></a>
+											<a class="first__img" href="single-product"><img src="/images/books/1.jpg" alt="product image"></a>
+											<a class="second__img animation1" href="single-product"><img src="/images/books/6.jpg" alt="product image"></a>
 											<div class="hot__box">
 												<span class="hot-label">BEST SALER</span>
 											</div>
@@ -837,8 +800,8 @@
 									<!-- Start Single Product -->
 									<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product__thumb">
-											<a class="first__img" href="single-product"><img src="images/books/1.jpg" alt="product image"></a>
-											<a class="second__img animation1" href="single-product"><img src="images/books/2.jpg" alt="product image"></a>
+											<a class="first__img" href="single-product"><img src="/images/books/1.jpg" alt="product image"></a>
+											<a class="second__img animation1" href="single-product"><img src="/images/books/2.jpg" alt="product image"></a>
 											<div class="hot__box">
 												<span class="hot-label">BEST SALLER</span>
 											</div>
@@ -874,8 +837,8 @@
 									<!-- Start Single Product -->
 									<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product__thumb">
-											<a class="first__img" href="single-product"><img src="images/books/3.jpg" alt="product image"></a>
-											<a class="second__img animation1" href="single-product"><img src="images/books/4.jpg" alt="product image"></a>
+											<a class="first__img" href="single-product"><img src="/images/books/3.jpg" alt="product image"></a>
+											<a class="second__img animation1" href="single-product"><img src="/images/books/4.jpg" alt="product image"></a>
 											<div class="hot__box color--2">
 												<span class="hot-label">HOT</span>
 											</div>
@@ -911,8 +874,8 @@
 									<!-- Start Single Product -->
 									<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product__thumb">
-											<a class="first__img" href="single-product"><img src="images/books/7.jpg" alt="product image"></a>
-											<a class="second__img animation1" href="single-product"><img src="images/books/8.jpg" alt="product image"></a>
+											<a class="first__img" href="single-product"><img src="/images/books/7.jpg" alt="product image"></a>
+											<a class="second__img animation1" href="single-product"><img src="/images/books/8.jpg" alt="product image"></a>
 											<div class="hot__box">
 												<span class="hot-label">HOT</span>
 											</div>
@@ -948,8 +911,8 @@
 									<!-- Start Single Product -->
 									<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product__thumb">
-											<a class="first__img" href="single-product"><img src="images/books/9.jpg" alt="product image"></a>
-											<a class="second__img animation1" href="single-product"><img src="images/books/10.jpg" alt="product image"></a>
+											<a class="first__img" href="single-product"><img src="/images/books/9.jpg" alt="product image"></a>
+											<a class="second__img animation1" href="single-product"><img src="/images/books/10.jpg" alt="product image"></a>
 											<div class="hot__box">
 												<span class="hot-label">HOT</span>
 											</div>
@@ -985,8 +948,8 @@
 									<!-- Start Single Product -->
 									<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product__thumb">
-											<a class="first__img" href="single-product"><img src="images/books/11.jpg" alt="product image"></a>
-											<a class="second__img animation1" href="single-product"><img src="images/books/2.jpg" alt="product image"></a>
+											<a class="first__img" href="single-product"><img src="/images/books/11.jpg" alt="product image"></a>
+											<a class="second__img animation1" href="single-product"><img src="/images/books/2.jpg" alt="product image"></a>
 											<div class="hot__box">
 												<span class="hot-label">BEST SALER</span>
 											</div>
@@ -1022,8 +985,8 @@
 									<!-- Start Single Product -->
 									<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product__thumb">
-											<a class="first__img" href="single-product"><img src="images/books/1.jpg" alt="product image"></a>
-											<a class="second__img animation1" href="single-product"><img src="images/books/6.jpg" alt="product image"></a>
+											<a class="first__img" href="single-product"><img src="/images/books/1.jpg" alt="product image"></a>
+											<a class="second__img animation1" href="single-product"><img src="/images/books/6.jpg" alt="product image"></a>
 											<div class="hot__box">
 												<span class="hot-label">BEST SALER</span>
 											</div>
@@ -1130,7 +1093,7 @@
         						</ul>
         					</aside>
         					<aside class="wedget__categories sidebar--banner">
-								<img src="images/others/banner_left.jpg" alt="banner images">
+								<img src="/images/others/banner_left.jpg" alt="banner images">
 								<div class="text">
 									<h2>new products</h2>
 									<h6>save up to <br> <strong>40%</strong>off</h6>
@@ -1166,7 +1129,7 @@
 							<div class="footer__widget footer__menu">
 								<div class="ft__logo">
 									<a href="index">
-										<img src="images/logo/3.png" alt="logo">
+										<img src="/images/logo/3.png" alt="logo">
 									</a>
 									<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered duskam alteration variations of passages</p>
 								</div>
@@ -1204,7 +1167,7 @@
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-12">
 							<div class="payment text-right">
-								<img src="images/icons/payment.png" alt="" />
+								<img src="/images/icons/payment.png" alt="" />
 							</div>
 						</div>
 					</div>
@@ -1226,7 +1189,7 @@
 		                        <!-- Start product images -->
 		                        <div class="product-images">
 		                            <div class="main-image images">
-		                                <img alt="big images" src="images/product/big-img/1.jpg">
+		                                <img alt="big images" src="/images/product/big-img/1.jpg">
 		                            </div>
 		                        </div>
 		                        <!-- end product images -->
@@ -1302,11 +1265,11 @@
 	
 
 	<!-- JS Files -->
-	<script src="js/vendor/jquery-3.2.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/active.js"></script>
+	<script src="/js/vendor/jquery-3.2.1.min.js"></script>
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/plugins.js"></script>
+	<script src="/js/active.js"></script>
 	
 </body>
 </html>

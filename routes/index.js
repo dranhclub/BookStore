@@ -2,18 +2,19 @@ var express = require('express');
 var router = express.Router();
 var myAccountController = require('../controllers/my-account');
 var shopGridController = require('../controllers/shop-grid-controller');
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Book Store' });
-});
+var indexController = require('../controllers/index-controller');
+var singleProductController = require('../controllers/single-product-controller');
 
-router.get('/index', function(req, res, next) {
-  res.render('index', { title: 'Book Store' });
-});
+/* GET home page. */
+router.get('/', indexController.index);
+router.get('/index', indexController.index);
 
 /* Authentication */
 router.get('/my-account', myAccountController.index);
 router.post('/my-account/register', myAccountController.register);
+
+router.get('/shop-grid', shopGridController.index);
+router.get('/single-product/:id', singleProductController.singleProduct);
 
 /* Others */ 
 router.get('/about', function(req, res, next) {
@@ -52,11 +53,7 @@ router.get('/portfolio', function(req, res, next) {
   res.render('portfolio', { title: 'portfolio' });
 });
 
-router.get('/shop-grid', shopGridController.index);
 
-router.get('/single-product', function(req, res, next) {
-  res.render('single-product', { title: 'single-product' });
-});
 
 router.get('/team', function(req, res, next) {
   res.render('team', { title: 'team' });
