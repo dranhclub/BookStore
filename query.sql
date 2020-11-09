@@ -1,13 +1,13 @@
--- create database if not exists bookstore;
+create database if not exists bookstore;
 
 use bookstore;
--- drop table if exists users;
--- create table users(
--- 	email varchar(30) primary key,
---     password varchar(30) not null
--- );
+drop table if exists users;
+create table users(
+	email varchar(30) primary key,
+    password varchar(30) not null
+);
 
--- insert into users values('example@gmail.com', '123abc');
+insert into users values('example@gmail.com', '123abc');
 
 drop table if exists products;
 create table products(
@@ -58,7 +58,14 @@ insert into products values
     'Inspired: How to Create Tech Products Customers Love',
     23.91,
     'How do today\'s most successful tech companies–Amazon, Google, Facebook, Netflix, Tesla–design, develop, and deploy the products that have earned the love of literally billions of people around the world? Perhaps surprisingly, they do it very differently than the vast majority of tech companies. In INSPIRED, technology product management thought leader Marty Cagan provides readers with a master class in how to structure and staff a vibrant and successful product organization, and how to discover and deliver technology products that your customers will love–and that will work for your business. With sections on assembling the right people and skillsets, discovering the right product, embracing an effective yet lightweight process, and creating a strong product culture, readers can take the information they learn and immediately leverage it within their own organizations–dramatically improving their own product efforts. Whether you\'re an early stage startup working to get to product/market fit, or a growth-stage company working to scale your product organization, or a large, long-established company trying to regain your ability to consistently deliver new value for your customers, INSPIRED will take you and your product organization to a new level of customer engagement, consistent innovation, and business success. Filled with the author\'s own personal stories–and profiles of some of today\'s most-successful product managers and technology-powered product companies, including Adobe, Apple, BBC, Google, Microsoft, and Netflix–INSPIRED will show you how to turn up the dial of your own product efforts, creating technology products your customers love. The first edition of INSPIRED, published ten years ago, established itself as the primary reference for technology product managers, and can be found on the shelves of nearly every successful technology product company worldwide. This thoroughly updated second edition shares the same objective of being the most valuable resource for technology product managers, yet it is completely new–sharing the latest practices and techniques of today\'s most-successful tech product companies, and the men and women behind every great product. (Amazon)'
+),
+(
+    8,
+    'AI Superpowers: China, Silicon Valley, and the New World Order',
+    23.47,
+    'THE NEW YORK TIMES, USA TODAY, AND WALL STREET JOURNAL BESTSELLER\n\nDr. Kai-Fu Lee—one of the world’s most respected experts on AI and China—reveals that China has suddenly caught up to the US at an astonishingly rapid and unexpected pace.\n\nIn AI Superpowers, Kai-fu Lee argues powerfully that because of these unprecedented developments in AI, dramatic changes will be happening much sooner than many of us expected. Indeed, as the US-Sino AI competition begins to heat up, Lee urges the US and China to both accept and to embrace the great responsibilities that come with significant technological power. Most experts already say that AI will have a devastating impact on blue-collar jobs. But Lee predicts that Chinese and American AI will have a strong impact on white-collar jobs as well. Is universal basic income the solution? In Lee’s opinion, probably not. But he provides a clear description of which jobs will be affected and how soon, which jobs can be enhanced with AI, and most importantly, how we can provide solutions to some of the most profound changes in human history that are coming soon. (Amazon)'
 );
+
 drop table if exists images;
 create table images(
     product_id int not null,
@@ -75,5 +82,21 @@ insert into images values
 (3, 0, 'images/books/how-to-be-an-adult-in-relationships-3.jpg'),
 (3, 0, 'images/books/how-to-be-an-adult-in-relationships-4.jpg'),
 (4, 1, 'images/books/at-home-cover.jpg'),
+(4, 0, 'images/books/at-home-cover-1.jpg'),
+(4, 0, 'images/books/at-home-cover-2.jpg'),
+(4, 0, 'images/books/at-home-cover-3.jpg'),
+(4, 0, 'images/books/at-home-cover-4.jpg'),
+(4, 0, 'images/books/at-home-cover-5.jpg'),
+(4, 0, 'images/books/at-home-cover-6.jpg'),
 (5, 1, 'images/books/history-of-art-for-young-people-cover.jpg'),
-(6, 1, 'images/books/the-colleced-schizophrenias-essays.jpg')
+(7, 1, 'images/books/How-to-Create-Tech-Products-Customers-Love-cover.jpg'),
+(7, 0, 'images/books/How-to-Create-Tech-Products-Customers-Love-1.jpg'),
+(7, 0, 'images/books/How-to-Create-Tech-Products-Customers-Love-2.jpg'),
+(7, 0, 'images/books/How-to-Create-Tech-Products-Customers-Love-3.jpg'),
+(7, 0, 'images/books/How-to-Create-Tech-Products-Customers-Love-4.jpg'),
+(6, 1, 'images/books/the-colleced-schizophrenias-essays.jpg'),
+(8, 1, 'images/books/AI-Superpowers-cover.jpg'),
+(8, 0, 'images/books/AI-Superpowers-1.jpg'),
+(8, 0, 'images/books/AI-Superpowers-2.jpg'),
+(8, 0, 'images/books/AI-Superpowers-3.jpg'),
+(8, 0, 'images/books/AI-Superpowers-4.jpg');
