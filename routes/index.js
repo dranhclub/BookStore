@@ -11,6 +11,7 @@ router.get('/index', indexController.index);
 
 /* Authentication */
 router.get('/my-account', myAccountController.index);
+router.post('/my-account/login', myAccountController.login);
 router.post('/my-account/register', myAccountController.register);
 
 router.get('/shop-grid', shopGridController.index);
