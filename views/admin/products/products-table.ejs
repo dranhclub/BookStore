@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title><%=title%></title>
+        <link href="/css/styles.css" rel="stylesheet" />
+        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        <%- include('../partials/topnav') %>
+        <div id="layoutSidenav">
+            <%-include('../partials/sidenav') %>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <h1 class="mt-4">Products management</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Products management</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <span class="">
+                                    <i class="fas fa-table mr-1"></i>
+                                    Books data
+                                </span>
+                                <a class="btn btn-primary" href='products/add-product'> <i class="fas fa-plus"></i> Add</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Title</th>
+                                                <th>Price</th>
+                                                <th>Description</th>
+                                                <th>Cover image</th>
+                                                <!-- <th>Other images</th> -->
+                                                <th>Operation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% for (product of products) { %>
+                                            <tr>
+                                                <td><%=product.id%></td>
+                                                <td><%=product.title%></td>
+                                                <td><%=product.price%></td>
+                                                <td class="description-text"><%-product.description.replace('\n', '</br>')%></td>
+                                                <td>
+                                                    <img src="/<%=product.coverImage%>" width="200" height="200"/>
+                                                </td>
+                                                <!-- <td><%=product.otherImages%></td> -->
+                                                <td>
+                                                    <button class="btn btn-info">edit</button>
+                                                    <button class="btn btn-danger mt-1">remove</button>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <%- include('../partials/footer') %>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+        <script src="/assets/demo/datatables-demo.js"></script>
+        <script>
+            const MAX_LENGTH = 500;
+            $(document).ready(()=>{
+                var descriptions = $('.description-text')
+                for (description of descriptions) {
+                    var text = $(description).html()
+                    if (text.length > MAX_LENGTH) {
+                        var html = $.parseHTML(text.substr(0, MAX_LENGTH) + "...<a href='#'>show more</a>");
+                        $(description).html(html);
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

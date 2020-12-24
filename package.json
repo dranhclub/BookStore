@@ -15,7 +15,8 @@
     "morgan": "~1.9.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
-    "mysql2-promise": "^0.1.4"
+    "mysql2-promise": "^0.1.4",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"

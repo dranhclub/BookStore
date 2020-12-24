@@ -100,3 +100,16 @@ insert into images values
 (8, 0, 'images/books/AI-Superpowers-2.jpg'),
 (8, 0, 'images/books/AI-Superpowers-3.jpg'),
 (8, 0, 'images/books/AI-Superpowers-4.jpg');
+
+
+
+/******************************************************************/
+/************************* ADMIN PAGE *****************************/
+
+drop table if exists admin_users;
+create table admin_users(
+	email varchar(30) primary key,
+    password varchar(30) not null
+);
+
+insert into admin_users values('admin@gmail.com', 'admin');
