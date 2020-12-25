@@ -4,7 +4,7 @@ var myAccountController = require('../controllers/my-account');
 var shopGridController = require('../controllers/shop-grid-controller');
 var indexController = require('../controllers/index-controller');
 var singleProductController = require('../controllers/single-product-controller');
-
+var cartController =  require('../controllers/cart-controller');
 /* GET home page. */
 router.get('/', indexController.index);
 router.get('/index', indexController.index);
@@ -30,10 +30,10 @@ router.get('/blog', function(req, res, next) {
   res.render('blog', { title: 'blog' });
 });
 
-router.get('/cart', function(req, res, next) {
+/*router.get('/cart', function(req, res, next) {
   res.render('cart', { title: 'cart' });
-});
-
+});*/
+router.get('/cart', cartController.Cart);
 router.get('/checkout', function(req, res, next) {
   res.render('checkout', { title: 'checkout' });
 });
@@ -53,8 +53,6 @@ router.get('/portfolio-details', function(req, res, next) {
 router.get('/portfolio', function(req, res, next) {
   res.render('portfolio', { title: 'portfolio' });
 });
-
-
 
 router.get('/team', function(req, res, next) {
   res.render('team', { title: 'team' });
