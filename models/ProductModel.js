@@ -34,3 +34,19 @@ exports.getProductById = async (id) => {
   }
   return product;
 }
+
+exports.addProduct = async (book) => {
+  console.log(book);
+  await conn.query(
+    `insert into products(title, price, description) values
+      (N'${book.title}', ${book.price},  N'${book.description}');`
+  );
+  var result = await conn.query(`select id from products order by id desc limit 1`);
+  var product_id = JSON.parse(JSON.stringify(result[0]));
+  var sql = `
+    insert into images(product_id, is_cover_img, url) values
+    (${product_id[0].id}, 1, 'images/uploads/${book.coverImage.filename}')
+  `;
+  console.log(sql);
+  await conn.query(sql);
+}

@@ -1,7 +1,8 @@
 const conn = require('../../conn');
+const ProductModel = require('../../models/ProductModel');
 
 exports.getProductsRequest = async (req, res) => {
-  var result = await conn.query(`select products.*, images.is_cover_img, images.url from products, images where id = product_id and is_cover_img = 1`);
+  var result = await conn.query(`select products.*, images.is_cover_img, images.url from products, images where products.id = product_id and is_cover_img = 1`);
   var products = []
   for (row of result[0]) {
     products.push({
@@ -26,9 +27,7 @@ exports.postAddProductRequest = async (req, res) => {
   const price = req.body.price;
   const description = req.body.description;
   const coverImage = req.file;
-  const book = {
-    title, price, description, coverImage
-  }
-  console.log("book: ", book);
+  
+  await ProductModel.addProduct({title, price, description, coverImage});
   res.redirect('/admin/products');
 }
