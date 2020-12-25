@@ -1,19 +1,16 @@
 var express = require('express');
 var router = express.Router();
+var multer  = require('multer')
+var upload = multer({ dest: 'uploads/' })
 var productsController = require('../controllers/admin/productsController');
 var authController = require('../controllers/admin/authController');
 
-/* CHECK LOGIN */
+/* GET COOKIES */
 router.use((req, res, next) => {
   const adminUser = req.cookies['adminUser'];
-  console.log("req.cookies: ", req.cookies)
-  console.log("check login, admin user = ", adminUser);
-  
   req.adminUser = adminUser
   next();
-  
 });
-
 
 
 /* HOME PAGE */
@@ -28,6 +25,7 @@ router.get('/index', authController.requireAuth , function (req, res, next) {
 /* PRODUCTS */
 router.get('/products', authController.requireAuth ,productsController.getProductsRequest);
 router.get('/products/add-product', authController.requireAuth , productsController.getAddProductRequest);
+router.post('/products/add-product', [authController.requireAuth, upload.single('coverImage')], productsController.postAddProductRequest);
 
 /* AUTH */
 router.get('/login', authController.loginGetRequest);

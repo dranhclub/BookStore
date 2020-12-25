@@ -29,7 +29,7 @@ exports.loginPostRequest = async function(req, res) {
     res.cookie('adminUser', {email, password, remember});
     res.redirect('index');
   } else {
-    res.render('admin/login', {error: 'Sai mật khẩu hoặc tài khoản'});
+    res.render('admin/login', {error: 'Wrong password or account'});
   }
 }
 
