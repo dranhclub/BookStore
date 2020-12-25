@@ -34,3 +34,4 @@ Tệp `query.sql` mô tả cơ sở dữ liệu mẫu.
 Mở `cmd` lên, `cd` tới thư mục `BookStore`, chạy lệnh `npm install`
 3. Chạy lệnh `npm start` để chạy server
 4. Mở trình duyệt, truy cập địa chỉ http://localhost:3000 để vào trang chủ
+5. Truy cập http://localhost:3000/admin để vào trang admin
