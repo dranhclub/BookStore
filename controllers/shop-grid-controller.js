@@ -1,4 +1,3 @@
-var conn = require('../conn');
 var ProductModel = require('../models/ProductModel');
 
 exports.index = async function(req, res, next) {

@@ -1,4 +1,4 @@
-const conn = require('../../conn');
+const AdminUserModel = require('../../models/AdminUserModel');
 
 exports.requireAuth = (req, res, next) => {
   if (req.adminUser) {
@@ -17,16 +17,8 @@ exports.loginPostRequest = async function(req, res) {
   const password = req.body.password;
   const remember = req.body.remember; // TODO
 
-  const sql = `select * from admin_users where email='${email}' and password='${password}'`
-  console.log(sql);
-  let result = await conn.query(sql).catch(
-    err => {
-      res.send(err);
-    }
-  );
-  result = result[0];
-  if (result.length > 0) {
-    res.cookie('adminUser', {email, password, remember});
+  if (await AdminUserModel.checkPassword(email, password)) {
+    res.cookie('adminUser', { email, password, remember });
     res.redirect('index');
   } else {
     res.render('admin/login', {error: 'Wrong password or account'});

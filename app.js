@@ -3,7 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var {connect} = require('./database/sequelize');
+var sync = require('./database/sync');
 var indexRouter = require('./routes/mainRoute');
 var adminRouter = require('./routes/adminRoute');
 
@@ -23,7 +24,8 @@ app.use(cookieParser());
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
 
-
+connect();
+sync();
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
@@ -41,5 +43,7 @@ app.use('/admin', adminRouter);
 //   // res.render('error404');
 //   res.send(err);
 // });
+
+require("./models/UserModel");
 
 module.exports = app;

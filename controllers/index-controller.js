@@ -1,8 +1,7 @@
-var conn = require('../conn');
 var ProductModel = require('../models/ProductModel');
 
 exports.index = async function(req, res, next) {
-  var products = await ProductModel.getListProducts();
+  var products = await ProductModel.findAll({});
   const MAX_LENGTH = 300;
   for (i = 0; i < products.length; i++) { 
     if (products[i].description.length > MAX_LENGTH) {
