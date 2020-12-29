@@ -19,3 +19,10 @@ exports.postAddProductRequest = async (req, res) => {
 
   res.redirect('/admin/products');
 }
+
+exports.removeProduct = async (req, res) => {
+  const id = req.params.id;
+  
+  await ProductModel.destroy({where: {id: id}});
+  res.redirect('/admin/products');
+}

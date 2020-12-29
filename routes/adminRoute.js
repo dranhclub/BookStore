@@ -26,6 +26,7 @@ router.get('/index', authController.requireAuth , function (req, res, next) {
 router.get('/products', authController.requireAuth ,productsController.getProductsRequest);
 router.get('/products/add-product', authController.requireAuth , productsController.getAddProductRequest);
 router.post('/products/add-product', [authController.requireAuth, upload.single('coverImage')], productsController.postAddProductRequest);
+router.get('/products/remove/:id', authController.requireAuth, productsController.removeProduct);
 
 /* AUTH */
 router.get('/login', authController.loginGetRequest);

@@ -9,6 +9,25 @@
         <title><%=title%></title>
         <link href="/css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+        <style>
+          #lable-for-oiu:hover{
+            cursor: pointer;
+          }
+          #lable-for-oiu{
+            display: flex;
+            width: 270px;
+            height: 340px;
+            background-color: #ccc;
+            border-radius: 10px;
+            justify-content: center;
+            align-items: center;
+          }
+          #other-images-upload{
+            opacity: 0;
+            position: absolute;
+            z-index: -1;
+          }
+        </style>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
@@ -45,8 +64,17 @@
                               <div class="form-group">
                                 <label class="d-block">Cover image</label>
                                 <img  id="cover-image-preview" src="/images/product/1.jpg"/>
-                                <input id="cover-image-upload" class="form-control" name="coverImage" type="file" accept="image/*" required onchange="previewImage()"/>
-                                <input id="cover-image-upload-mask" name="coverImage" hidden/>
+                                <input id="cover-image-upload" class="form-control" name="coverImage" type="file" accept="image/*" required onchange="previewCoverImage()"/>
+                              </div>
+                              <div class="form-group">
+                                <label class="d-block">Other images</label>
+                                <div id="other-images-preview">
+                                  <!-- <img src="/images/books/1.jpg"/> -->
+                                </div>
+                                <label id="lable-for-oiu" for="other-images-upload">
+                                  <i class="fas fa-plus" style="font-size: 50px;"></i>
+                                </label>
+                                <input id="other-images-upload" name="coverImage" type="file" accept="image/*" required onchange="addOtherImage()"/>
                               </div>
                               <button type="submit" class="btn btn-primary">Add product</button>
                             </form>
@@ -60,7 +88,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="/js/scripts.js"></script>
         <script>
-          function previewImage() {
+          function previewCoverImage() {
             const preview = document.getElementById('cover-image-preview');
             const file = document.getElementById('cover-image-upload').files[0];
             console.log(file);
@@ -69,11 +97,33 @@
             reader.addEventListener("load", function () {
               // convert image file to base64 string
               preview.src = reader.result;
+              console.log(preview);
             }, false);
 
             if (file) {
               reader.readAsDataURL(file);
             }
+          }
+
+          function addOtherImage() {
+            const inputElm = document.getElementById('other-images-upload');
+            const file = inputElm.files[0];
+            const previewDiv = document.getElementById('other-images-preview');
+            const reader = new FileReader();
+
+            reader.addEventListener("load", function () {
+              const html = document.createElement("img");
+              html.src = reader.result;
+              html.width = 270;
+              html.height = 340;
+              console.log(html);
+              previewDiv.insertBefore(html, previewDiv.firstChild);
+            }, false);
+
+            if (file) {
+              reader.readAsDataURL(file);
+            }
+
           }
       </script>
     </body>

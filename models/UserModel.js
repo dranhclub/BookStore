@@ -30,9 +30,4 @@ User.init({
   tableName: 'users'
 });
 
-// (async () => {
-//   await sequelize.sync({ force: true });
-//   // Code here
-// })();
-
 module.exports = User;

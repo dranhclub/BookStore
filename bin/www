@@ -7,7 +7,6 @@
 var app = require('../app');
 var debug = require('debug')('bookstore:server');
 var http = require('http');
-require('../conn'); // connect to database
 
 /**
  * Get port from environment and store in Express.

@@ -30,13 +30,4 @@ AdminUser.init({
   tableName: 'admin_users'
 });
 
-// (async () => {
-//   await sequelize.sync({ force: true });
-//   // Code here
-//   AdminUser.create({
-//     email: 'admin@gmail.com',
-//     password: 'admin'
-//   })
-// })();
-
 module.exports = AdminUser;
