@@ -8,5 +8,9 @@ exports.index = async function(req, res, next) {
       products[i].description = products[i].description.slice(0, MAX_LENGTH) + "...";
     }
   }
-  res.render('index', { title: 'BookStore - Home Page', products: products});
+  res.render('index', { 
+    title: 'BookStore - Home Page', 
+    products: products,
+    req
+  });
 }

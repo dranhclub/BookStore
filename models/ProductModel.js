@@ -32,6 +32,19 @@ Product.init({
     set(val) {
       this.setDataValue('imageURLs', val.join(';'));
     }
+  },
+  categories: {
+    type: DataTypes.TEXT,
+    get() {
+      const data = this.getDataValue('categories');
+      if (data) {
+        return data.split(';');
+      }
+      return [];
+    },
+    set(val) {
+      this.setDataValue('categories', val.join(';'));
+    }
   }
 }, {
   sequelize,
