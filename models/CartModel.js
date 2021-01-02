@@ -1,32 +1,18 @@
-var GuestCart = {1 : 3,
-    2 : 4 ,
-    3 : 5 ,
-    };  // id , amount
-exports.getListCart = async (userID) =>{
-    if(userID == ''){
-        return GuestCart;
-    }
-    else{
-     //   const result = await conn.query(`select bookID from carts where userID = ${userid}`);
-       // var listID = JSON.parse(JSON.stringify(result[0]));
-    }
-}
+const { DataTypes, Model, Op } = require('sequelize');
+const { sequelize } = require('../database/sequelize');
 
-exports.Addtocart = async (id , userID) => {
-    if(userID==''){
-        if ( GuestCart.hasOwnProperty(id)){
-            GuestCart[id]++;
-        }
-        else{
-            GuestCart[id] = 1 ;
-        }
-        
-    } 
-}
-exports.setListCart = (id,number) => {
-    if(GuestCart.hasOwnProperty(id)){ 
-        GuestCart[id] = number; 
-        if(number==0){delete GuestCart[id]; }
-    }
-    console.log("set");
-}
+class Cart extends Model { }
+
+Cart.init({
+  productId: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  quantity: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    defaultValue: 1
+  }
+}, {
+  sequelize
+});

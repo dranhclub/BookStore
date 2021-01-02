@@ -51,7 +51,7 @@
         									<span>Qty</span>
         									<input id="qty" class="input-text qty" name="qty" min="1" value="1" title="Qty" type="number">
         									<div class="addtocart__actions">
-        										<button class="tocart" type="submit" title="Add to Cart"> <a href="?id_add=<%=product.id%>">Add to Cart</a></button>
+        										<button class="tocart" type="submit" title="Add to Cart"> <a href="/cart/add?id=<%=product.id%>">Add to Cart</a></button>
         									</div>
 											<div class="product-addto-links clearfix">
 												<a class="wishlist" href="#"></a>
@@ -60,8 +60,7 @@
         								</div>
 										<div class="product_meta">
 											<span class="posted_in">Categories: 
-												<a href="#">Adventure</a>, 
-												<a href="#">Kids' Music</a>
+												<%- categories.map(cat => `<a href="/shop-grid?category=${cat.id}">${" " + cat.name}</a> `) %>
 											</span>
 										</div>
 										<div class="product-share">

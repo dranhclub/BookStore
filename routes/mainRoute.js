@@ -26,6 +26,17 @@ router.get('/logout', myAccountController.logout);
 router.get('/shop-grid', shopGridController.index);
 router.get('/single-product/:id', singleProductController.singleProduct);
 
+/* Cart & checkout */
+router.get('/cart', cartController.getCart);
+router.get('/cart/add', cartController.getAddToCart);
+router.get('/cart/remove', cartController.getRemoveFromCart);
+router.get('/checkout', function (req, res, next) {
+  res.render('checkout', {
+    title: 'checkout',
+    req
+  });
+});
+
 /* Others */
 router.get('/about', function (req, res, next) {
   res.render('about', {
@@ -44,14 +55,6 @@ router.get('/blog-details', function (req, res, next) {
 router.get('/blog', function (req, res, next) {
   res.render('blog', {
     title: 'blog',
-    req
-  });
-});
-
-router.get('/cart', cartController.Cart);
-router.get('/checkout', function (req, res, next) {
-  res.render('checkout', {
-    title: 'checkout',
     req
   });
 });

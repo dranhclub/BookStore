@@ -1,23 +1,45 @@
 var CartModel = require('../models/CartModel');
 var ProductModel = require('../models/ProductModel');
 
-exports.Cart = async function (req, res, next) {
-  var idremove = req.query.id
-  var list = await CartModel.getListCart(''); // guest
-  if (idremove) {
-    CartModel.setListCart(idremove, 0);
-  }
-  var listProduct = [];
-  var product = [];
-  for (var key of Object.keys(list)) {
-    console.log(key);
-    var product = await ProductModel.findOne({ where: { id: key } });
-    listProduct.push(product);
-  }
+exports.getCart = async function (req, res, next) {
+  let items = req.cookies['cart'];
+  if (!items) items = [];
+
   res.render('cart', {
     title: 'cart',
-    listProduct: listProduct,
-    list: list,
+    items,
     req
   });
+}
+
+exports.getAddToCart = async (req, res) => {
+  const id = req.query.id;
+  const product = await ProductModel.findOne({where: {id: id}});
+
+  let item = {
+    product: {
+      id: product.id,
+      title: product.title,
+      price: product.price,
+      coverImageURL: product.coverImageURL
+    },
+    quantity: 1
+  };
+
+  let items = req.cookies['cart'];
+  if (!items) items = [];
+
+  items.push(item);
+  res.cookie('cart', items);
+
+  res.redirect('/cart');
+}
+
+exports.getRemoveFromCart = async (req, res) => {
+  const id = req.query.id;
+  let items = req.cookies['cart'];
+  if (!items) items = [];
+  items.splice(items.findIndex(item => item.product.id == id), 1);
+  res.cookie('cart', items);
+  res.redirect('/cart');
 }
