@@ -8,6 +8,9 @@ var cartController = require('../controllers/cart-controller');
 
 /* GET COOKIES */
 router.use((req, res, next) => {
+  let minicart = req.cookies['cart'];
+  if (!minicart) minicart = [];
+  req.minicart = minicart;
   const user = req.cookies['user'];
   req.user = user
   next();
@@ -30,6 +33,7 @@ router.get('/single-product/:id', singleProductController.singleProduct);
 router.get('/cart', cartController.getCart);
 router.get('/cart/add', cartController.getAddToCart);
 router.get('/cart/remove', cartController.getRemoveFromCart);
+router.get('/cart/update', cartController.getUpdateCart);
 router.get('/checkout', function (req, res, next) {
   res.render('checkout', {
     title: 'checkout',

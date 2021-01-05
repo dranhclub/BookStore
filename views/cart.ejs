@@ -17,7 +17,7 @@
           <div class="container">
             <div class="row">
               <div class="col-md-12 col-sm-12 ol-lg-12">
-                <form action="#">
+                <form id="cartForm" action="/cart/update" method="get">
                   <div class="table-content wnro__table table-responsive">
                     <table>
                       <thead>
@@ -33,14 +33,14 @@
                       <tbody>
                         <% for (const item of items) { %>
                           <tr class="product-item">
-                            <td class="product-thumbnail"><a href="#"><img src="<%=item.product.coverImageURL%>"
+                            <td class="product-thumbnail"><a href="single-product/<%=item.product.id%>"><img src="<%=item.product.coverImageURL%>"
                                   alt="product img"></a>
                             </td>
-                            <td class="product-name"><a href="#">
+                            <td class="product-name"><a href="single-product/<%=item.product.id%>">
                                 <%= item.product.title %>
                               </a></td>
                             <td class="product-price"><span class="amount">$<%= item.product.price %></span></td>
-                            <td class="product-quantity"><input type="number" value="<%= item.quantity %>" onchange="update()" min="0"></td>
+                            <td class="product-quantity"><input type="number" value="<%= item.quantity %>" onchange="update()" min="0" name="<%=item.product.id%>"></td>
                             <td class="product-subtotal">$<%= item.quantity * item.product.price %>
                             </td>
                             <td class="product-remove"><a href="/cart/remove?id=<%= item.product.id %>">X</a></td>
@@ -54,7 +54,7 @@
                   <ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
                     <li><a href="#">Coupon Code</a></li>
                     <li><a href="#">Apply Code</a></li>
-                    <li><a href="cart">Update Cart</a></li>
+                    <li><a href="#" onclick="document.getElementById('cartForm').submit()">Update Cart</a></li>
                     <li><a href="checkout">Check Out</a></li>
                   </ul>
                 </div>

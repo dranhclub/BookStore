@@ -4,7 +4,6 @@ var ProductModel = require('../models/ProductModel');
 exports.getCart = async function (req, res, next) {
   let items = req.cookies['cart'];
   if (!items) items = [];
-
   res.render('cart', {
     title: 'cart',
     items,
@@ -27,14 +26,37 @@ exports.getAddToCart = async (req, res) => {
   };
 
   let items = req.cookies['cart'];
-  if (!items) items = [];
-
-  items.push(item);
+  if (!items){
+    items = [];
+    items.push(item);
+  }
+  else if(items[items.findIndex(item => item.product.id == id)]){
+      items[items.findIndex(item => item.product.id == id)].quantity +=1;
+  }
+  else{
+      items.push(item);
+  }
   res.cookie('cart', items);
 
   res.redirect('/cart');
 }
 
+exports.getUpdateCart = async (req, res) => {
+  
+  const listQty = req.query
+  let items = req.cookies['cart'];
+  if (!items) items = [];
+  for(const item of items){
+    if(listQty[item.product.id.toString()] >0){
+      item.quantity = listQty[item.product.id.toString()]
+    }else{
+      items.splice(items.findIndex(ele => ele.product.id ==item.product.id ), 1);
+    }
+  }
+  res.cookie('cart', items);
+
+  res.redirect('/cart');
+}
 exports.getRemoveFromCart = async (req, res) => {
   const id = req.query.id;
   let items = req.cookies['cart'];
