@@ -74,22 +74,8 @@
 	        							<input type="text">
 	        						</div>
         						</div>
-        						<div class="input_box">
-        							<label>Company name <span>*</span></label>
-        							<input type="text">
-        						</div>
-        						<div class="input_box">
-        							<label>Country<span>*</span></label>
-        							<select class="select__option">
-										<option>Select a country…</option>
-										<option>Afghanistan</option>
-										<option>American Samoa</option>
-										<option>Anguilla</option>
-										<option>American Samoa</option>
-										<option>Antarctica</option>
-										<option>Antigua and Barbuda</option>
-        							</select>
-        						</div>
+        					
+        						
         						<div class="input_box">
         							<label>Address <span>*</span></label>
         							<input type="text" placeholder="Street address">
@@ -100,13 +86,13 @@
         						<div class="input_box">
         							<label>District<span>*</span></label>
         							<select class="select__option">
-										<option>Select a country…</option>
-										<option>Afghanistan</option>
-										<option>American Samoa</option>
-										<option>Anguilla</option>
-										<option>American Samoa</option>
-										<option>Antarctica</option>
-										<option>Antigua and Barbuda</option>
+										<option>Select a district…</option>
+										<option>HaNoi</option>
+										<option>Ho Chi Minh</option>
+										<option>Da Nang</option>
+										<option>Hue</option>
+										<option>Yen Bai</option>
+										<option>Can Tho</option>
         							</select>
         						</div>
 								<div class="input_box">
@@ -212,30 +198,32 @@
         					<ul class="order__total">
         						<li>Product</li>
         						<li>Total</li>
-        					</ul>
+							</ul>
+							<% let minicart = req.minicart %>
+         					<% let total = 0 %>
+          					<% for (const item of minicart){ total += (item.product.price*item.quantity) } %>
         					<ul class="order_product">
-        						<li>Buscipit at magna × 1<span>$48.00</span></li>
-        						<li>Buscipit at magna × 1<span>$48.00</span></li>
-        						<li>Buscipit at magna × 1<span>$48.00</span></li>
-        						<li>Buscipit at magna × 1<span>$48.00</span></li>
+								<% for (const item of minicart ){ %>
+        						<li><%= item.product.title %> × <%= item.quantity%> <span>$<%= item.product.price %></span></li>
+								<%} %>
         					</ul>
         					<ul class="shipping__method">
-        						<li>Cart Subtotal <span>$48.00</span></li>
+        						<li>Cart Subtotal <span>$0.00</span></li>
         						<li>Shipping 
         							<ul>
         								<li>
         									<input name="shipping_method[0]" data-index="0" value="legacy_flat_rate" checked="checked" type="radio">
-        									<label>Flat Rate: $48.00</label>
+        									<label>Flat Rate: $38.00</label>
         								</li>
         								<li>
         									<input name="shipping_method[0]" data-index="0" value="legacy_flat_rate" checked="checked" type="radio">
-        									<label>Flat Rate: $48.00</label>
+        									<label>Flat Rate: $38.00</label>
         								</li>
         							</ul>
         						</li>
         					</ul>
         					<ul class="total__amount">
-        						<li>Order Total <span>$223.00</span></li>
+        						<li>Order Total <span>$<%=total%></span></li>
         					</ul>
         				</div>
 					    <div id="accordion" class="checkout_accordion mt--30" role="tablist">
